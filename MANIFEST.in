@@ -1,0 +1,7 @@
+global-exclude __pycache__
+global-exclude *pyc
+global-exclude *.so
+global-exclude *.sw[po]
+prune doc
+prune tests
+prune context_embed_utils.egg-info
