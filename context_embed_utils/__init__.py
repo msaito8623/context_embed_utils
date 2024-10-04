@@ -3,3 +3,5 @@ try:
     __version__ = _version(__name__)
 except PackageNotFoundError:
     pass
+
+from .main import *
