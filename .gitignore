@@ -3,4 +3,5 @@
 build/
 dist/
 context_embed_utils.egg-info/
+_version.py
 
