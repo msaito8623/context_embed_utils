@@ -1,0 +1,6 @@
+*__pycache__*
+*.swp
+build/
+dist/
+context_embed_utils.egg-info/
+
