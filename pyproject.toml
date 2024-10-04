@@ -1,0 +1,33 @@
+[project]
+name = "context_embed_utils"
+description = "Utilities for contextualized embeddings in python"
+readme = "README.rst"
+authors = [
+    { name = "Motoki Saito", email = "motoki.saito@uni-tuebingen.de" }
+]
+license = { text = "MIT license" }
+dependencies = [
+    "numpy>=1.26.4",
+    "torch>=2.3.0",
+]
+dynamic = ["version"]
+
+[project.urls]
+homepage = "https://github.com/msaito8623/context_embed_utils"
+
+[build-system]
+requires = [
+    "setuptools>=75.1.0",
+    "wheel>0.44.0",
+    "setuptools_scm[toml]>8.1.0",
+]
+
+[tool.setuptools]
+zip_safe = false
+
+[tool.setuptools.packages.find]
+
+
+[tool.setuptools_scm]
+write_to = "context_embed_utils/_version.py"
+
