@@ -18,12 +18,12 @@ homepage = "https://github.com/msaito8623/context_embed_utils"
 [build-system]
 requires = [
     "setuptools>=75.1.0",
-    "wheel>0.44.0",
-    "setuptools_scm[toml]>8.1.0",
+    "wheel>=0.44.0",
+    "setuptools_scm[toml]>=8.1.0",
 ]
 
 [tool.setuptools]
-zip_safe = false
+zip-safe = false
 
 [tool.setuptools.packages.find]
 
