@@ -12,6 +12,12 @@ dependencies = [
 ]
 dynamic = ["version"]
 
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "transformers",
+]
+
 [project.urls]
 homepage = "https://github.com/msaito8623/context_embed_utils"
 
