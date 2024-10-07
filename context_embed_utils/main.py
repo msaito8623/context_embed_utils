@@ -146,8 +146,32 @@ def token_ids (sentences, tokenizer):
         indicate which token IDs are padding-tokens (i.e., 0 for padding
         tokens).
     """
-    tokenizer.pad_token = tokenizer.eos_token
-    t = tokenizer(sentences, return_tensors="pt", padding=True)
+    if tokenizer.pad_token is None:
+        raise ValueError('Run "context_embed_utils.padding" first.')
+    else:
+        t = tokenizer(sentences, return_tensors="pt", padding=True)
     return t
 
+def padding (tokenizer, model):
+    """
+    Sets the padding token for a tokenizer and resize the token embedding size
+    for a model.
+
+    Parameters
+    ----------
+    tokenizer : transformers.models.gpt2.tokenization_gpt2_fast.GPT2TokenizerFast
+        A tokenizer object created by transformers.AutoTokenizer.from_pretrained.
+    model : transformers.models.gpt2.modeling_gpt2.GPT2Model
+        A model created by transformers.AutoModel.from_pretrained.
+
+    Returns
+    -------
+    tokenizer_model : tuple
+        A tuple of "tokenizer" and "model", where the padding token is defined
+        as the end-of-sentence token.
+    """
+    tokenizer.pad_token = tokenizer.eos_token
+    model.resize_token_embeddings(len(tokenizer))
+    tokenizer_model = (tokenizer, model)
+    return tokenizer_model
 

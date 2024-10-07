@@ -12,8 +12,23 @@ RESOURCES = TEST_ROOT / 'resources'
 
 tokenizer = AutoTokenizer.from_pretrained("gpt2", clean_up_tokenization_spaces=True)
 model = AutoModel.from_pretrained("gpt2")
-
 sentences = ["university city", "a great university library"]
+
+tokenizer_de = AutoTokenizer.from_pretrained("dbmdz/german-gpt2", clean_up_tokenization_spaces=True)
+model_de = AutoModel.from_pretrained("dbmdz/german-gpt2")
+sentences_de = ["Ich bin ein Mensch", "Krankenversicherungskarte"]
+
+def test_padding ():
+    t, m = ce.padding(tokenizer_de, model_de)
+    assert len(t) == m.config.vocab_size
+
+def test_word_embeddings():
+    with pytest.raises(Exception) as e:
+        ce.token_ids(sentences, tokenizer)
+    assert str(e.value)=='Run "context_embed_utils.padding" first.'
+
+tokenizer, model = ce.padding(tokenizer, model)
+tokenizer_de, model_de = ce.padding(tokenizer_de, model_de)
 
 def test_words ():
     ans = [['university', 'city', np.nan, np.nan], ['a', 'great', 'university', 'library']]
